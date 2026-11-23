@@ -1,9 +1,14 @@
 import express from "express";
+import authRouter from "./routers/authRouter.js"
 
 const app = express();
+app.use(express.json())
+app.use(authRouter)
 
 // ----------------------------GET---------------------------------
-app.get("/api/dashboard", (req, res) => {
+app.get("/api/dashboard", () => {
+
+}, (req, res) => {
     res.json({ message: "dashboard test" });
 });
 
@@ -71,7 +76,7 @@ app.delete("/api/expenses/:id", (req, res) => {
     res.json({ message: "" });
 });
 
-const PORT = 3000;
+const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`Serveren kører på`, PORT);
 });
